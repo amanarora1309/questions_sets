@@ -17,17 +17,17 @@ function App() {
       formData.append("excelFile", excelFile);
       const response = await axios.post(`http://localhost:8000/api/v1/question-paper/genrate-question-sets`, formData);
 
-      if (response.data.success) {
-        console.log(response.data);
+      if (response?.data?.success) {
+        console.log(response?.data);
         toast.success("Sets Genrated Successfully");
       }
       else {
-        toast.error(response.data.message);
+        toast.error(response?.data?.message || "Something went wrong");
       }
 
     } catch (error) {
-      console.log(error.response);
-      toast.error(error.response.data.message)
+      console.log(error?.response);
+      toast.error(error?.response?.data?.message || "Something went wrong");
     }
 
   }
